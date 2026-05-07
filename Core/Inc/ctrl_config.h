@@ -1,24 +1,29 @@
 #ifndef CTRL_CONFIG_H
 #define CTRL_CONFIG_H
 
+#include "main.h"
 #include "motor_driver.h"
 #include "encoder.h"
 #include "motor_pid.h"
 #include "battery.h"
-#include "tof_vl53l0x.h"
+#include "tof_vl53l1x.h"
 
-#define N_MOTORS 4
-#define PER_REV 1940
-#define MAX_RPM 160
+#define N_MOTORS 4U
+#define PER_REV 1940U
+#define MAX_RPM 160U
 #define KP 3.0f
 #define KI 0.5f
 #define KD 0.2f
 #define ALPHA 0.5f
-#define CMD_TIMEOUT_US 500000
+#define CMD_TIMEOUT_US 500000U
 
 #define V_REF 3.3f
 #define ADC_MAX 4095.0f
-#define DIV_RATIO 11.13374
+#define DIV_RATIO 11.13374f
+
+#define TOF_ADR 0x52U
+#define TOF_TIMING_BUDGET_MS 100U
+#define TOF_INTER_MEASUREMENT_MS 100U
 
 static motor_t motors[N_MOTORS] = {
   { .htim = &htim8, .channel = TIM_CHANNEL_1, .dir_port = M1_DIR_GPIO_Port, .dir_pin = M1_DIR_Pin, .max_pwm = TIM8_ARR },
@@ -52,8 +57,11 @@ static battery_t bat = {
 };
 
 static tof_t tof = {
-  .hi2c = &hi2c1,
-  .i2c_addr = 0x52
+  .dev_adrr = TOF_ADR,
+  .timing_budget_ms = TOF_TIMING_BUDGET_MS,
+  .inter_measurement_ms = TOF_INTER_MEASUREMENT_MS,
+  .xshut_port = TOF_XSHUT_GPIO_Port,
+  .xshut_pin = TOF_XSHUT_Pin
 };
 
 #endif

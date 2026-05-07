@@ -24,6 +24,7 @@ void controller_init(bool debug)
     motor_pid_init(&motor_pids[i]);
   }
   battery_measure_init(&bat);
+  tof_reset(&tof);
   tof_init(&tof);
 }
 

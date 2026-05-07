@@ -76,6 +76,8 @@ void Error_Handler(void);
 #define M2_DIR_GPIO_Port GPIOB
 #define M1_DIR_Pin GPIO_PIN_15
 #define M1_DIR_GPIO_Port GPIOB
+#define TOF_XSHUT_Pin GPIO_PIN_12
+#define TOF_XSHUT_GPIO_Port GPIOA
 #define TMS_Pin GPIO_PIN_13
 #define TMS_GPIO_Port GPIOA
 #define TCK_Pin GPIO_PIN_14

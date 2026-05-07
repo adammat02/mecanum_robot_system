@@ -53,24 +53,20 @@ target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     Core/Src/cmd_parser.c
     Core/Src/controller.c
     Core/Src/battery.c
-    Core/Src/tof_vl53l0x.c
+    Core/Src/tof_vl53l1x.c
     Drivers/CMSIS/DSP/Source/ControllerFunctions/arm_pid_init_f32.c
     Drivers/CMSIS/DSP/Source/ControllerFunctions/arm_pid_reset_f32.c
-    Drivers/VL53L0X/core/src/vl53l0x_api.c
-    Drivers/VL53L0X/core/src/vl53l0x_api_calibration.c
-    Drivers/VL53L0X/core/src/vl53l0x_api_core.c
-    Drivers/VL53L0X/core/src/vl53l0x_api_ranging.c
-    Drivers/VL53L0X/core/src/vl53l0x_api_strings.c
-    Drivers/VL53L0X/platform/src/vl53l0x_platform.c
-    Drivers/VL53L0X/platform/src/vl53l0x_platform_log.c
+    Drivers/VL53L1X/core/VL53L1X_api.c
+    Drivers/VL53L1X/core/VL53L1X_calibration.c
+    Drivers/VL53L1X/platform/vl53l1_platform.c
 )
 
 # Add include paths
 target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
     # Add user defined include paths
     Drivers/CMSIS/DSP/Include
-    Drivers/VL53L0X/platform/inc
-    Drivers/VL53L0X/core/inc
+    Drivers/VL53L1X/platform
+    Drivers/VL53L1X/core
     Core/Inc
 )
 
