@@ -26,7 +26,7 @@
  * @return 0:success, !=0: failed
  * @return offset pointer contains the offset found in mm
  */
-int8_t VL53L1X_CalibrateOffset(uint16_t dev, uint16_t TargetDistInMm, int16_t *offset);
+int8_t VL53L1X_CalibrateOffset(VL53L1_Dev_t *dev, uint16_t TargetDistInMm, int16_t *offset);
 
 /**
  * @brief This function performs the xtalk calibration.\n
@@ -39,6 +39,6 @@ int8_t VL53L1X_CalibrateOffset(uint16_t dev, uint16_t TargetDistInMm, int16_t *o
  * @return 0: success, !=0: failed
  * @return xtalk pointer contains the xtalk value found in cps (number of photons in count per second)
  */
-int8_t VL53L1X_CalibrateXtalk(uint16_t dev, uint16_t TargetDistInMm, uint16_t *xtalk);
+int8_t VL53L1X_CalibrateXtalk(VL53L1_Dev_t *dev, uint16_t TargetDistInMm, uint16_t *xtalk);
 
 #endif

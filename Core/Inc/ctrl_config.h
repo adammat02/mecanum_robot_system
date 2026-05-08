@@ -57,7 +57,7 @@ static battery_t bat = {
 };
 
 static tof_t tof = {
-  .dev_adrr = TOF_ADR,
+  .dev = { &hi2c1, TOF_ADR },
   .timing_budget_ms = TOF_TIMING_BUDGET_MS,
   .inter_measurement_ms = TOF_INTER_MEASUREMENT_MS,
   .xshut_port = TOF_XSHUT_GPIO_Port,

@@ -5,12 +5,12 @@ void tof_init(tof_t *tof)
 {
   uint8_t boot_state = 0;
   while (!boot_state)
-    VL53L1X_BootState(tof->dev_adrr, &boot_state);
+    VL53L1X_BootState(&tof->dev, &boot_state);
 
-  VL53L1X_SensorInit(tof->dev_adrr);
-  VL53L1X_SetTimingBudgetInMs(tof->dev_adrr, tof->timing_budget_ms);
-  VL53L1X_SetInterMeasurementInMs(tof->dev_adrr, tof->inter_measurement_ms);
-  VL53L1X_StartRanging(tof->dev_adrr);
+  VL53L1X_SensorInit(&tof->dev);
+  VL53L1X_SetTimingBudgetInMs(&tof->dev, tof->timing_budget_ms);
+  VL53L1X_SetInterMeasurementInMs(&tof->dev, tof->inter_measurement_ms);
+  VL53L1X_StartRanging(&tof->dev);
 }
 
 void tof_reset(tof_t *tof)
@@ -23,11 +23,11 @@ void tof_reset(tof_t *tof)
 
 uint16_t tof_get_distance(tof_t *tof)
 {
-  VL53L1X_CheckForDataReady(tof->dev_adrr, &tof->sensor_ready);
+  VL53L1X_CheckForDataReady(&tof->dev, &tof->sensor_ready);
   if (tof->sensor_ready)
   {
-    VL53L1X_GetDistance(tof->dev_adrr, &tof->distance);
-    VL53L1X_ClearInterrupt(tof->dev_adrr);
+    VL53L1X_GetDistance(&tof->dev, &tof->distance);
+    VL53L1X_ClearInterrupt(&tof->dev);
   }
   return tof->distance;
 }

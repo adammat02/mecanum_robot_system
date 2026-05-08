@@ -5,10 +5,10 @@
 #include "i2c.h"
 #include "gpio.h"
 
-/** VL53L0X sensor handle. */
+/** VL53L1X sensor handle. */
 typedef struct
 {
-  uint16_t dev_adrr;
+  VL53L1_Dev_t dev;
   uint8_t sensor_ready;
   uint16_t timing_budget_ms;
   uint32_t inter_measurement_ms;
@@ -18,7 +18,7 @@ typedef struct
 } tof_t;
 
 /**
- * @brief Initialize the VL53L0X sensor.
+ * @brief Initialize the VL53L1X sensor.
  * @param tof  Pointer to sensor handle.
  */
 void tof_init(tof_t *tof);

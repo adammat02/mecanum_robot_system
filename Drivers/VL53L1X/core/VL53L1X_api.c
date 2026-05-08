@@ -167,7 +167,7 @@ VL53L1X_ERROR VL53L1X_GetSWVersion(VL53L1X_Version_t *pVersion)
 	return Status;
 }
 
-VL53L1X_ERROR VL53L1X_SetI2CAddress(uint16_t dev, uint8_t new_address)
+VL53L1X_ERROR VL53L1X_SetI2CAddress(VL53L1_Dev_t *dev, uint8_t new_address)
 {
 	VL53L1X_ERROR status = 0;
 
@@ -175,7 +175,7 @@ VL53L1X_ERROR VL53L1X_SetI2CAddress(uint16_t dev, uint8_t new_address)
 	return status;
 }
 
-VL53L1X_ERROR VL53L1X_SensorInit(uint16_t dev)
+VL53L1X_ERROR VL53L1X_SensorInit(VL53L1_Dev_t *dev)
 {
 	VL53L1X_ERROR status = 0;
 	uint8_t Addr = 0x00, tmp =0;
@@ -203,7 +203,7 @@ VL53L1X_ERROR VL53L1X_SensorInit(uint16_t dev)
 	return status;
 }
 
-VL53L1X_ERROR VL53L1X_ClearInterrupt(uint16_t dev)
+VL53L1X_ERROR VL53L1X_ClearInterrupt(VL53L1_Dev_t *dev)
 {
 	VL53L1X_ERROR status = 0;
 
@@ -211,7 +211,7 @@ VL53L1X_ERROR VL53L1X_ClearInterrupt(uint16_t dev)
 	return status;
 }
 
-VL53L1X_ERROR VL53L1X_SetInterruptPolarity(uint16_t dev, uint8_t NewPolarity)
+VL53L1X_ERROR VL53L1X_SetInterruptPolarity(VL53L1_Dev_t *dev, uint8_t NewPolarity)
 {
 	uint8_t Temp;
 	VL53L1X_ERROR status = 0;
@@ -222,7 +222,7 @@ VL53L1X_ERROR VL53L1X_SetInterruptPolarity(uint16_t dev, uint8_t NewPolarity)
 	return status;
 }
 
-VL53L1X_ERROR VL53L1X_GetInterruptPolarity(uint16_t dev, uint8_t *pInterruptPolarity)
+VL53L1X_ERROR VL53L1X_GetInterruptPolarity(VL53L1_Dev_t *dev, uint8_t *pInterruptPolarity)
 {
 	uint8_t Temp;
 	VL53L1X_ERROR status = 0;
@@ -233,7 +233,7 @@ VL53L1X_ERROR VL53L1X_GetInterruptPolarity(uint16_t dev, uint8_t *pInterruptPola
 	return status;
 }
 
-VL53L1X_ERROR VL53L1X_StartRanging(uint16_t dev)
+VL53L1X_ERROR VL53L1X_StartRanging(VL53L1_Dev_t *dev)
 {
 	VL53L1X_ERROR status = 0;
 
@@ -241,7 +241,7 @@ VL53L1X_ERROR VL53L1X_StartRanging(uint16_t dev)
 	return status;
 }
 
-VL53L1X_ERROR VL53L1X_StopRanging(uint16_t dev)
+VL53L1X_ERROR VL53L1X_StopRanging(VL53L1_Dev_t *dev)
 {
 	VL53L1X_ERROR status = 0;
 
@@ -249,7 +249,7 @@ VL53L1X_ERROR VL53L1X_StopRanging(uint16_t dev)
 	return status;
 }
 
-VL53L1X_ERROR VL53L1X_CheckForDataReady(uint16_t dev, uint8_t *isDataReady)
+VL53L1X_ERROR VL53L1X_CheckForDataReady(VL53L1_Dev_t *dev, uint8_t *isDataReady)
 {
 	uint8_t Temp;
 	uint8_t IntPol;
@@ -267,7 +267,7 @@ VL53L1X_ERROR VL53L1X_CheckForDataReady(uint16_t dev, uint8_t *isDataReady)
 	return status;
 }
 
-VL53L1X_ERROR VL53L1X_SetTimingBudgetInMs(uint16_t dev, uint16_t TimingBudgetInMs)
+VL53L1X_ERROR VL53L1X_SetTimingBudgetInMs(VL53L1_Dev_t *dev, uint16_t TimingBudgetInMs)
 {
 	uint16_t DM;
 	VL53L1X_ERROR  status=0;
@@ -369,7 +369,7 @@ VL53L1X_ERROR VL53L1X_SetTimingBudgetInMs(uint16_t dev, uint16_t TimingBudgetInM
 	return status;
 }
 
-VL53L1X_ERROR VL53L1X_GetTimingBudgetInMs(uint16_t dev, uint16_t *pTimingBudget)
+VL53L1X_ERROR VL53L1X_GetTimingBudgetInMs(VL53L1_Dev_t *dev, uint16_t *pTimingBudget)
 {
 	uint16_t Temp;
 	VL53L1X_ERROR status = 0;
@@ -410,7 +410,7 @@ VL53L1X_ERROR VL53L1X_GetTimingBudgetInMs(uint16_t dev, uint16_t *pTimingBudget)
 	return status;
 }
 
-VL53L1X_ERROR VL53L1X_SetDistanceMode(uint16_t dev, uint16_t DM)
+VL53L1X_ERROR VL53L1X_SetDistanceMode(VL53L1_Dev_t *dev, uint16_t DM)
 {
 	uint16_t TB;
 	VL53L1X_ERROR status = 0;
@@ -445,7 +445,7 @@ VL53L1X_ERROR VL53L1X_SetDistanceMode(uint16_t dev, uint16_t DM)
 	return status;
 }
 
-VL53L1X_ERROR VL53L1X_GetDistanceMode(uint16_t dev, uint16_t *DM)
+VL53L1X_ERROR VL53L1X_GetDistanceMode(VL53L1_Dev_t *dev, uint16_t *DM)
 {
 	uint8_t TempDM, status=0;
 
@@ -457,7 +457,7 @@ VL53L1X_ERROR VL53L1X_GetDistanceMode(uint16_t dev, uint16_t *DM)
 	return status;
 }
 
-VL53L1X_ERROR VL53L1X_SetInterMeasurementInMs(uint16_t dev, uint32_t InterMeasMs)
+VL53L1X_ERROR VL53L1X_SetInterMeasurementInMs(VL53L1_Dev_t *dev, uint32_t InterMeasMs)
 {
 	uint16_t ClockPLL;
 	VL53L1X_ERROR status = 0;
@@ -470,7 +470,7 @@ VL53L1X_ERROR VL53L1X_SetInterMeasurementInMs(uint16_t dev, uint32_t InterMeasMs
 
 }
 
-VL53L1X_ERROR VL53L1X_GetInterMeasurementInMs(uint16_t dev, uint16_t *pIM)
+VL53L1X_ERROR VL53L1X_GetInterMeasurementInMs(VL53L1_Dev_t *dev, uint16_t *pIM)
 {
 	uint16_t ClockPLL;
 	VL53L1X_ERROR status = 0;
@@ -484,7 +484,7 @@ VL53L1X_ERROR VL53L1X_GetInterMeasurementInMs(uint16_t dev, uint16_t *pIM)
 	return status;
 }
 
-VL53L1X_ERROR VL53L1X_BootState(uint16_t dev, uint8_t *state)
+VL53L1X_ERROR VL53L1X_BootState(VL53L1_Dev_t *dev, uint8_t *state)
 {
 	VL53L1X_ERROR status = 0;
 	uint8_t tmp = 0;
@@ -494,7 +494,7 @@ VL53L1X_ERROR VL53L1X_BootState(uint16_t dev, uint8_t *state)
 	return status;
 }
 
-VL53L1X_ERROR VL53L1X_GetSensorId(uint16_t dev, uint16_t *sensorId)
+VL53L1X_ERROR VL53L1X_GetSensorId(VL53L1_Dev_t *dev, uint16_t *sensorId)
 {
 	VL53L1X_ERROR status = 0;
 	uint16_t tmp = 0;
@@ -504,7 +504,7 @@ VL53L1X_ERROR VL53L1X_GetSensorId(uint16_t dev, uint16_t *sensorId)
 	return status;
 }
 
-VL53L1X_ERROR VL53L1X_GetDistance(uint16_t dev, uint16_t *distance)
+VL53L1X_ERROR VL53L1X_GetDistance(VL53L1_Dev_t *dev, uint16_t *distance)
 {
 	VL53L1X_ERROR status = 0;
 	uint16_t tmp;
@@ -515,7 +515,7 @@ VL53L1X_ERROR VL53L1X_GetDistance(uint16_t dev, uint16_t *distance)
 	return status;
 }
 
-VL53L1X_ERROR VL53L1X_GetSignalPerSpad(uint16_t dev, uint16_t *signalRate)
+VL53L1X_ERROR VL53L1X_GetSignalPerSpad(VL53L1_Dev_t *dev, uint16_t *signalRate)
 {
 	VL53L1X_ERROR status = 0;
 	uint16_t SpNb=1, signal;
@@ -528,7 +528,7 @@ VL53L1X_ERROR VL53L1X_GetSignalPerSpad(uint16_t dev, uint16_t *signalRate)
 	return status;
 }
 
-VL53L1X_ERROR VL53L1X_GetAmbientPerSpad(uint16_t dev, uint16_t *ambPerSp)
+VL53L1X_ERROR VL53L1X_GetAmbientPerSpad(VL53L1_Dev_t *dev, uint16_t *ambPerSp)
 {
 	VL53L1X_ERROR status = 0;
 	uint16_t AmbientRate, SpNb = 1;
@@ -539,7 +539,7 @@ VL53L1X_ERROR VL53L1X_GetAmbientPerSpad(uint16_t dev, uint16_t *ambPerSp)
 	return status;
 }
 
-VL53L1X_ERROR VL53L1X_GetSignalRate(uint16_t dev, uint16_t *signal)
+VL53L1X_ERROR VL53L1X_GetSignalRate(VL53L1_Dev_t *dev, uint16_t *signal)
 {
 	VL53L1X_ERROR status = 0;
 	uint16_t tmp;
@@ -550,7 +550,7 @@ VL53L1X_ERROR VL53L1X_GetSignalRate(uint16_t dev, uint16_t *signal)
 	return status;
 }
 
-VL53L1X_ERROR VL53L1X_GetSpadNb(uint16_t dev, uint16_t *spNb)
+VL53L1X_ERROR VL53L1X_GetSpadNb(VL53L1_Dev_t *dev, uint16_t *spNb)
 {
 	VL53L1X_ERROR status = 0;
 	uint16_t tmp;
@@ -561,7 +561,7 @@ VL53L1X_ERROR VL53L1X_GetSpadNb(uint16_t dev, uint16_t *spNb)
 	return status;
 }
 
-VL53L1X_ERROR VL53L1X_GetAmbientRate(uint16_t dev, uint16_t *ambRate)
+VL53L1X_ERROR VL53L1X_GetAmbientRate(VL53L1_Dev_t *dev, uint16_t *ambRate)
 {
 	VL53L1X_ERROR status = 0;
 	uint16_t tmp;
@@ -571,7 +571,7 @@ VL53L1X_ERROR VL53L1X_GetAmbientRate(uint16_t dev, uint16_t *ambRate)
 	return status;
 }
 
-VL53L1X_ERROR VL53L1X_GetRangeStatus(uint16_t dev, uint8_t *rangeStatus)
+VL53L1X_ERROR VL53L1X_GetRangeStatus(VL53L1_Dev_t *dev, uint8_t *rangeStatus)
 {
 	VL53L1X_ERROR status = 0;
 	uint8_t RgSt;
@@ -584,7 +584,7 @@ VL53L1X_ERROR VL53L1X_GetRangeStatus(uint16_t dev, uint8_t *rangeStatus)
 	return status;
 }
 
-VL53L1X_ERROR VL53L1X_GetResult(uint16_t dev, VL53L1X_Result_t *pResult)
+VL53L1X_ERROR VL53L1X_GetResult(VL53L1_Dev_t *dev, VL53L1X_Result_t *pResult)
 {
 	VL53L1X_ERROR status = 0;
 	uint8_t Temp[17];
@@ -603,7 +603,7 @@ VL53L1X_ERROR VL53L1X_GetResult(uint16_t dev, VL53L1X_Result_t *pResult)
 	return status;
 }
 
-VL53L1X_ERROR VL53L1X_SetOffset(uint16_t dev, int16_t OffsetValue)
+VL53L1X_ERROR VL53L1X_SetOffset(VL53L1_Dev_t *dev, int16_t OffsetValue)
 {
 	VL53L1X_ERROR status = 0;
 	int16_t Temp;
@@ -616,7 +616,7 @@ VL53L1X_ERROR VL53L1X_SetOffset(uint16_t dev, int16_t OffsetValue)
 	return status;
 }
 
-VL53L1X_ERROR  VL53L1X_GetOffset(uint16_t dev, int16_t *offset)
+VL53L1X_ERROR  VL53L1X_GetOffset(VL53L1_Dev_t *dev, int16_t *offset)
 {
 	VL53L1X_ERROR status = 0;
 	uint16_t Temp;
@@ -634,7 +634,7 @@ VL53L1X_ERROR  VL53L1X_GetOffset(uint16_t dev, int16_t *offset)
 	return status;
 }
 
-VL53L1X_ERROR VL53L1X_SetXtalk(uint16_t dev, uint16_t XtalkValue)
+VL53L1X_ERROR VL53L1X_SetXtalk(VL53L1_Dev_t *dev, uint16_t XtalkValue)
 {
 /* XTalkValue in count per second to avoid float type */
 	VL53L1X_ERROR status = 0;
@@ -649,7 +649,7 @@ VL53L1X_ERROR VL53L1X_SetXtalk(uint16_t dev, uint16_t XtalkValue)
 	return status;
 }
 
-VL53L1X_ERROR VL53L1X_GetXtalk(uint16_t dev, uint16_t *xtalk )
+VL53L1X_ERROR VL53L1X_GetXtalk(VL53L1_Dev_t *dev, uint16_t *xtalk )
 {
 	VL53L1X_ERROR status = 0;
 
@@ -658,7 +658,7 @@ VL53L1X_ERROR VL53L1X_GetXtalk(uint16_t dev, uint16_t *xtalk )
 	return status;
 }
 
-VL53L1X_ERROR VL53L1X_SetDistanceThreshold(uint16_t dev, uint16_t ThreshLow,
+VL53L1X_ERROR VL53L1X_SetDistanceThreshold(VL53L1_Dev_t *dev, uint16_t ThreshLow,
 			      uint16_t ThreshHigh, uint8_t Window,
 			      uint8_t IntOnNoTarget)
 {
@@ -678,7 +678,7 @@ VL53L1X_ERROR VL53L1X_SetDistanceThreshold(uint16_t dev, uint16_t ThreshLow,
 	return status;
 }
 
-VL53L1X_ERROR VL53L1X_GetDistanceThresholdWindow(uint16_t dev, uint16_t *window)
+VL53L1X_ERROR VL53L1X_GetDistanceThresholdWindow(VL53L1_Dev_t *dev, uint16_t *window)
 {
 	VL53L1X_ERROR status = 0;
 	uint8_t tmp;
@@ -687,7 +687,7 @@ VL53L1X_ERROR VL53L1X_GetDistanceThresholdWindow(uint16_t dev, uint16_t *window)
 	return status;
 }
 
-VL53L1X_ERROR VL53L1X_GetDistanceThresholdLow(uint16_t dev, uint16_t *low)
+VL53L1X_ERROR VL53L1X_GetDistanceThresholdLow(VL53L1_Dev_t *dev, uint16_t *low)
 {
 	VL53L1X_ERROR status = 0;
 	uint16_t tmp;
@@ -697,7 +697,7 @@ VL53L1X_ERROR VL53L1X_GetDistanceThresholdLow(uint16_t dev, uint16_t *low)
 	return status;
 }
 
-VL53L1X_ERROR VL53L1X_GetDistanceThresholdHigh(uint16_t dev, uint16_t *high)
+VL53L1X_ERROR VL53L1X_GetDistanceThresholdHigh(VL53L1_Dev_t *dev, uint16_t *high)
 {
 	VL53L1X_ERROR status = 0;
 	uint16_t tmp;
@@ -707,14 +707,14 @@ VL53L1X_ERROR VL53L1X_GetDistanceThresholdHigh(uint16_t dev, uint16_t *high)
 	return status;
 }
 
-VL53L1X_ERROR VL53L1X_SetROICenter(uint16_t dev, uint8_t ROICenter)
+VL53L1X_ERROR VL53L1X_SetROICenter(VL53L1_Dev_t *dev, uint8_t ROICenter)
 {
 	VL53L1X_ERROR status = 0;
 	status |= VL53L1_WrByte(dev, ROI_CONFIG__USER_ROI_CENTRE_SPAD, ROICenter);
 	return status;
 }
 
-VL53L1X_ERROR VL53L1X_GetROICenter(uint16_t dev, uint8_t *ROICenter)
+VL53L1X_ERROR VL53L1X_GetROICenter(VL53L1_Dev_t *dev, uint8_t *ROICenter)
 {
 	VL53L1X_ERROR status = 0;
 	uint8_t tmp;
@@ -723,7 +723,7 @@ VL53L1X_ERROR VL53L1X_GetROICenter(uint16_t dev, uint8_t *ROICenter)
 	return status;
 }
 
-VL53L1X_ERROR VL53L1X_SetROI(uint16_t dev, uint16_t X, uint16_t Y)
+VL53L1X_ERROR VL53L1X_SetROI(VL53L1_Dev_t *dev, uint16_t X, uint16_t Y)
 {
 	uint8_t OpticalCenter;
 	VL53L1X_ERROR status = 0;
@@ -742,7 +742,7 @@ VL53L1X_ERROR VL53L1X_SetROI(uint16_t dev, uint16_t X, uint16_t Y)
 	return status;
 }
 
-VL53L1X_ERROR VL53L1X_GetROI_XY(uint16_t dev, uint16_t *ROI_X, uint16_t *ROI_Y)
+VL53L1X_ERROR VL53L1X_GetROI_XY(VL53L1_Dev_t *dev, uint16_t *ROI_X, uint16_t *ROI_Y)
 {
 	VL53L1X_ERROR status = 0;
 	uint8_t tmp;
@@ -753,7 +753,7 @@ VL53L1X_ERROR VL53L1X_GetROI_XY(uint16_t dev, uint16_t *ROI_X, uint16_t *ROI_Y)
 	return status;
 }
 
-VL53L1X_ERROR VL53L1X_SetSignalThreshold(uint16_t dev, uint16_t Signal)
+VL53L1X_ERROR VL53L1X_SetSignalThreshold(VL53L1_Dev_t *dev, uint16_t Signal)
 {
 	VL53L1X_ERROR status = 0;
 
@@ -761,7 +761,7 @@ VL53L1X_ERROR VL53L1X_SetSignalThreshold(uint16_t dev, uint16_t Signal)
 	return status;
 }
 
-VL53L1X_ERROR VL53L1X_GetSignalThreshold(uint16_t dev, uint16_t *signal)
+VL53L1X_ERROR VL53L1X_GetSignalThreshold(VL53L1_Dev_t *dev, uint16_t *signal)
 {
 	VL53L1X_ERROR status = 0;
 	uint16_t tmp;
@@ -772,7 +772,7 @@ VL53L1X_ERROR VL53L1X_GetSignalThreshold(uint16_t dev, uint16_t *signal)
 	return status;
 }
 
-VL53L1X_ERROR VL53L1X_SetSigmaThreshold(uint16_t dev, uint16_t Sigma)
+VL53L1X_ERROR VL53L1X_SetSigmaThreshold(VL53L1_Dev_t *dev, uint16_t Sigma)
 {
 	VL53L1X_ERROR status = 0;
 
@@ -784,7 +784,7 @@ VL53L1X_ERROR VL53L1X_SetSigmaThreshold(uint16_t dev, uint16_t Sigma)
 	return status;
 }
 
-VL53L1X_ERROR VL53L1X_GetSigmaThreshold(uint16_t dev, uint16_t *sigma)
+VL53L1X_ERROR VL53L1X_GetSigmaThreshold(VL53L1_Dev_t *dev, uint16_t *sigma)
 {
 	VL53L1X_ERROR status = 0;
 	uint16_t tmp;
@@ -795,7 +795,7 @@ VL53L1X_ERROR VL53L1X_GetSigmaThreshold(uint16_t dev, uint16_t *sigma)
 
 }
 
-VL53L1X_ERROR VL53L1X_StartTemperatureUpdate(uint16_t dev)
+VL53L1X_ERROR VL53L1X_StartTemperatureUpdate(VL53L1_Dev_t *dev)
 {
 	VL53L1X_ERROR status = 0;
 	uint8_t tmp=0;
